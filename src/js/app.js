@@ -1,3 +1,3 @@
-var ADD_TODO = require('./actionTypes.js');
 
-console.log(ADD_TODO);
+
+console.log(ADD_TODO, REMOVE_TODO, TOGGLE_TODO);

@@ -65,20 +65,12 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var ADD_TODO = __webpack_require__(1);
-
-console.log(ADD_TODO);
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports) {
 
-const ADD_TODO = 'ADD_TODO';
-const REMOVE_TODO = 'REMOVE_TODO';
 
-module.exports =  ADD_TODO;
+
+console.log(ADD_TODO, REMOVE_TODO, TOGGLE_TODO);
+
 
 /***/ })
 /******/ ]);
