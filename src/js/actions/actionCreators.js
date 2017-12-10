@@ -1,5 +1,4 @@
 import {ADD_TODO, REMOVE_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER} from './actionTypes.js';
-import VisibilityFilters from './visibilityFilters.js';
 
 export function addTodo(text){
     return {type : ADD_TODO, text }

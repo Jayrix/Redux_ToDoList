@@ -69,8 +69,5 @@
 
 
 
-console.log(ADD_TODO, REMOVE_TODO, TOGGLE_TODO);
-
-
 /***/ })
 /******/ ]);
