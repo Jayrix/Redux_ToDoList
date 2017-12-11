@@ -1,8 +1,10 @@
+import React from 'react';
+import {render} from 'react-dom';
 import {createStore} from 'redux';
 import todoApp from './reducers/reducers';
 import {addTodo, removeTodo, toggleTodo, setVisibilityFilter} from "./actions/actionCreators";
 import {VisibilityFilters} from "./actions/actionTypes";
-
+import App from './components/App.jsx';
 
 document.addEventListener('DOMContentLoaded', function (){
 
@@ -20,5 +22,12 @@ document.addEventListener('DOMContentLoaded', function (){
     store.dispatch(removeTodo(0));
 
     unsubscribe();
+
+    render(
+        <App />,
+        document.getElementById('root')
+    );
+
+
 
 });
