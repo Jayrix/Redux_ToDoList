@@ -8,7 +8,7 @@ import App from './components/App.jsx'
 
 
 
-let store = createStore(todoApp)
+let store = createStore(todoApp,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 render(
     <Provider store={store}>
