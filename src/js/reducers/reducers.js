@@ -5,7 +5,8 @@ const {SHOW_ALL} = VisibilityFilters;
 
 // const initialState = {
 //     visibilityFilter : VisibilityFilters.SHOW_ALL,
-//     todos : []
+//     todos : [],
+//     todosIdsAmount : 0
 // }
 
 // function todoApp(state, action) {
@@ -32,12 +33,13 @@ function todos(state = [], action){
                 ...state,
                 {
                     text : action.text,
-                    completed : false
+                    completed : false,
+                    id : action.id
                 }
             ];
         case REMOVE_TODO:
-            return state.filter((todo, index) => {
-                return index !== action.index
+            return state.filter((todo) => {
+                return todo.id !== action.id
             });
         case TOGGLE_TODO:
             return state.map((todo, index) => {

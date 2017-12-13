@@ -850,12 +850,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__actionTypes_js__ = __webpack_require__(30);
 
 
+let id_counter = 1;
 function addTodo(text){
-    return {type : __WEBPACK_IMPORTED_MODULE_0__actionTypes_js__["a" /* ADD_TODO */], text }
+    return {type : __WEBPACK_IMPORTED_MODULE_0__actionTypes_js__["a" /* ADD_TODO */], text, id : id_counter++ }
 }
 
-function removeTodo(index){
-    return {type : __WEBPACK_IMPORTED_MODULE_0__actionTypes_js__["b" /* REMOVE_TODO */], index }
+function removeTodo(id){
+    return {type : __WEBPACK_IMPORTED_MODULE_0__actionTypes_js__["b" /* REMOVE_TODO */], id }
 }
 
 function toggleTodo(index){
@@ -21237,7 +21238,8 @@ const {SHOW_ALL} = __WEBPACK_IMPORTED_MODULE_1__actions_actionTypes_js__["e" /* 
 
 // const initialState = {
 //     visibilityFilter : VisibilityFilters.SHOW_ALL,
-//     todos : []
+//     todos : [],
+//     todosIdsAmount : 0
 // }
 
 // function todoApp(state, action) {
@@ -21264,12 +21266,13 @@ function todos(state = [], action){
                 ...state,
                 {
                     text : action.text,
-                    completed : false
+                    completed : false,
+                    id : action.id
                 }
             ];
         case __WEBPACK_IMPORTED_MODULE_1__actions_actionTypes_js__["b" /* REMOVE_TODO */]:
-            return state.filter((todo, index) => {
-                return index !== action.index
+            return state.filter((todo) => {
+                return todo.id !== action.id
             });
         case __WEBPACK_IMPORTED_MODULE_1__actions_actionTypes_js__["d" /* TOGGLE_TODO */]:
             return state.map((todo, index) => {
@@ -21659,12 +21662,17 @@ var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _RemoveTodo = __webpack_require__(80);
+
+var _RemoveTodo2 = _interopRequireDefault(_RemoveTodo);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Todo = function Todo(_ref) {
     var onClick = _ref.onClick,
         completed = _ref.completed,
-        text = _ref.text;
+        text = _ref.text,
+        id = _ref.id;
     return _react2.default.createElement(
         'li',
         {
@@ -21673,7 +21681,8 @@ var Todo = function Todo(_ref) {
                 textDecoration: completed ? 'line-through' : 'none'
             }
         },
-        text
+        text + ' ',
+        _react2.default.createElement(_RemoveTodo2.default, { id: id })
     );
 };
 
@@ -21684,6 +21693,44 @@ Todo.propTypes = {
 };
 
 exports.default = Todo;
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(8);
+
+var _actionCreators = __webpack_require__(14);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var RemoveTodo = function RemoveTodo(_ref) {
+    var dispatch = _ref.dispatch,
+        id = _ref.id;
+
+    return _react2.default.createElement(
+        'button',
+        { onClick: function onClick(e) {
+                dispatch((0, _actionCreators.removeTodo)(id));
+            } },
+        'Remove'
+    );
+};
+
+RemoveTodo = (0, _reactRedux.connect)()(RemoveTodo);
+
+exports.default = RemoveTodo;
 
 /***/ })
 /******/ ]);
