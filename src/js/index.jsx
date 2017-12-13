@@ -14,7 +14,8 @@ import App from './components/App.jsx'
 //     }
 // };
 
-let store = createStore(todoApp,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+//let store = createStore(todoApp,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+let store = createStore(todoApp);
 
 // store.subscribe( () => {
 //     sessionStorage.setItem('data', JSON.stringify(store.getState()));

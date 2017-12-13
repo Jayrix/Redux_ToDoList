@@ -2027,7 +2027,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //     }
 // };
 
-var store = (0, _redux.createStore)(_reducers2.default, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+//let store = createStore(todoApp,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+var store = (0, _redux.createStore)(_reducers2.default);
 
 // store.subscribe( () => {
 //     sessionStorage.setItem('data', JSON.stringify(store.getState()));
