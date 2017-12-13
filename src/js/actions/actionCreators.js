@@ -9,8 +9,8 @@ export function removeTodo(id){
     return {type : REMOVE_TODO, id }
 }
 
-export function toggleTodo(index){
-    return {type : TOGGLE_TODO, index }
+export function toggleTodo(id){
+    return {type : TOGGLE_TODO, id }
 }
 
 export function setVisibilityFilter(filter) {

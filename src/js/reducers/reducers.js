@@ -42,8 +42,8 @@ function todos(state = [], action){
                 return todo.id !== action.id
             });
         case TOGGLE_TODO:
-            return state.map((todo, index) => {
-                if(index === action.index){
+            return state.map((todo) => {
+                if(todo.id === action.id){
                     return Object.assign({}, todo, {
                         completed : !todo.completed
                     })

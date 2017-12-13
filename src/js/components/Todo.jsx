@@ -4,12 +4,15 @@ import RemoveTodo from '../containers/RemoveTodo.jsx';
 
 const Todo = ({ onClick, completed, text, id }) => (
     <li
-        onClick={onClick}
-        style={{
-            textDecoration: completed ? 'line-through' : 'none'
-        }}
+
     >
-        {text + ' '}
+        <span onClick={() => onClick(id)}
+              style={{
+                  textDecoration: completed ? 'line-through' : 'none'
+              }}
+        >
+            {text + ' '}
+        </span>
         <RemoveTodo id={id}/>
     </li>
 )

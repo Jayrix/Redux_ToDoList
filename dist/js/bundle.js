@@ -859,8 +859,8 @@ function removeTodo(id){
     return {type : __WEBPACK_IMPORTED_MODULE_0__actionTypes_js__["b" /* REMOVE_TODO */], id }
 }
 
-function toggleTodo(index){
-    return {type : __WEBPACK_IMPORTED_MODULE_0__actionTypes_js__["d" /* TOGGLE_TODO */], index }
+function toggleTodo(id){
+    return {type : __WEBPACK_IMPORTED_MODULE_0__actionTypes_js__["d" /* TOGGLE_TODO */], id }
 }
 
 function setVisibilityFilter(filter) {
@@ -21275,8 +21275,8 @@ function todos(state = [], action){
                 return todo.id !== action.id
             });
         case __WEBPACK_IMPORTED_MODULE_1__actions_actionTypes_js__["d" /* TOGGLE_TODO */]:
-            return state.map((todo, index) => {
-                if(index === action.index){
+            return state.map((todo) => {
+                if(todo.id === action.id){
                     return Object.assign({}, todo, {
                         completed : !todo.completed
                     })
@@ -21622,9 +21622,7 @@ var TodoList = function TodoList(_ref) {
         todos.map(function (todo, index) {
             return _react2.default.createElement(_Todo2.default, _extends({ key: index
             }, todo, {
-                onClick: function onClick() {
-                    return onTodoClick(index);
-                }
+                onClick: onTodoClick
             }));
         })
     );
@@ -21669,19 +21667,24 @@ var _RemoveTodo2 = _interopRequireDefault(_RemoveTodo);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Todo = function Todo(_ref) {
-    var onClick = _ref.onClick,
+    var _onClick = _ref.onClick,
         completed = _ref.completed,
         text = _ref.text,
         id = _ref.id;
     return _react2.default.createElement(
         'li',
-        {
-            onClick: onClick,
-            style: {
-                textDecoration: completed ? 'line-through' : 'none'
-            }
-        },
-        text + ' ',
+        null,
+        _react2.default.createElement(
+            'span',
+            { onClick: function onClick() {
+                    return _onClick(id);
+                },
+                style: {
+                    textDecoration: completed ? 'line-through' : 'none'
+                }
+            },
+            text + ' '
+        ),
         _react2.default.createElement(_RemoveTodo2.default, { id: id })
     );
 };
