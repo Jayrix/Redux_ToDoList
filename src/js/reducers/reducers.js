@@ -5,8 +5,8 @@ const {SHOW_ALL} = VisibilityFilters;
 
 // const initialState = {
 //     visibilityFilter : VisibilityFilters.SHOW_ALL,
-//     todos : [],
-//     todosIdsAmount : 0
+//     todos : []
+//
 // }
 
 // function todoApp(state, action) {
@@ -25,6 +25,7 @@ function visibilityFilter(state = SHOW_ALL , action) {
             return state
     }
 }
+
 
 function todos(state = [], action){
     switch (action.type) {
@@ -55,6 +56,8 @@ function todos(state = [], action){
     }
 }
 
+
+
 // function todoApp(state = {}, action) {
 //     return {
 //         visibilityFilter: visibilityFilter(state.visibilityFilter, action),
@@ -65,6 +68,7 @@ function todos(state = [], action){
 const todoApp = combineReducers({
     visibilityFilter,
     todos
+
 });
 
 export default todoApp;
